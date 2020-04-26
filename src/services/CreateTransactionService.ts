@@ -8,7 +8,7 @@ class CreateTransactionService {
     this.transactionsRepository = transactionsRepository;
   }
 
-  public execute({ title, value, type }: Transaction): Transaction {
+  public execute({ title, value, type }: Omit<Transaction, 'id'>): Transaction {
     if (type === 'outcome') {
       const balance = this.transactionsRepository.getBalance();
 
